@@ -27,9 +27,6 @@ public class TouristPlaceDTO {
     private String address;
 
     @NotBlank
-    private String imageUrl;
-
-    @NotBlank
     private String mapUrl;
 
     @NotNull
