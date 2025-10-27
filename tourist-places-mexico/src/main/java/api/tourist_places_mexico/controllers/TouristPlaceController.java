@@ -4,16 +4,19 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import api.tourist_places_mexico.domain.dto.PlaceFilters;
+import api.tourist_places_mexico.domain.dto.touristplace.PlaceFilters;
+import api.tourist_places_mexico.domain.dto.touristplace.TouristPlaceDTO;
+import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-@RequestMapping("management-place/api/v1")
+@RequestMapping("/management-place/api/v1")
 public class TouristPlaceController {
     
     @GetMapping("/places")
@@ -42,12 +45,12 @@ public class TouristPlaceController {
     }
 
     @PostMapping("/places")
-    public String createPlace() {
+    public String createPlace(@Valid @RequestBody TouristPlaceDTO payload) {
         return "place created";
     }
     
     @PutMapping("/places/{id}")
-    public String updatePlace(@PathVariable(required = true) Long id) {
+    public String updatePlace(@PathVariable(required = true) Long id, @Valid @RequestBody TouristPlaceDTO payload) {
         return "place updated";
     }
 

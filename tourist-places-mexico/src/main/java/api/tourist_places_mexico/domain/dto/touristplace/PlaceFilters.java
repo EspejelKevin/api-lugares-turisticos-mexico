@@ -1,4 +1,4 @@
-package api.tourist_places_mexico.domain.dto;
+package api.tourist_places_mexico.domain.dto.touristplace;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
