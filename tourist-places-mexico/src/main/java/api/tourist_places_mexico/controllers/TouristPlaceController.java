@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import api.tourist_places_mexico.domain.dto.touristplace.PlaceFilters;
 import api.tourist_places_mexico.domain.dto.touristplace.TouristPlaceDTO;
+import api.tourist_places_mexico.domain.validators.ValidImage;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,8 +37,8 @@ public class TouristPlaceController {
         return "places by state";
     }
 
-    @GetMapping("/places/category/{id}")
-    public String placesByCategory(@PathVariable(required = true) Long id) {
+    @GetMapping("/places/category/{category}")
+    public String placesByCategory(@PathVariable(required = true) String category) {
         return "places by category";
     }
 
@@ -47,7 +48,7 @@ public class TouristPlaceController {
     }
 
     @PostMapping("/places")
-    public String createPlace(@Valid @RequestPart TouristPlaceDTO payload, @RequestPart("file") MultipartFile file) {
+    public String createPlace(@Valid @RequestPart TouristPlaceDTO payload, @ValidImage @RequestPart MultipartFile file) {
         return "place created";
     }
     
@@ -57,7 +58,7 @@ public class TouristPlaceController {
     }
 
     @PutMapping("/places/{id}/image")
-    public String updateImagePlace(@PathVariable(required = true) Long id, @RequestPart("file") MultipartFile file) {
+    public String updateImagePlace(@PathVariable(required = true) Long id, @ValidImage @RequestPart MultipartFile file) {
         return "image place updated";
     }
 

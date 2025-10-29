@@ -25,7 +25,7 @@ public class TouristActivityDTO {
     private String description;
 
     @NotNull
-    @DecimalMin(value = "0.01")
+    @DecimalMin(value = "1.0")
     private BigDecimal price;
 
     @NotNull
